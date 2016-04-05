@@ -169,7 +169,7 @@
         
         section {
             background-color: #F2EBF7;
-            height: 300px;
+            height: 400px; /*프로필 등록을 위해서 section의 세로 사이즈 조정함 - 오병소 (160405 - UI 작업)*/
             margin-bottom: 1em;
             padding: 1em 1em .5em 1em;
         }
@@ -370,91 +370,114 @@
                             </ul>
                         </div>
                         <div class="col-md-offset-2 col-md-9 content">
+                            
+                            <section id="one">
                       
                                 <br>
-                                <div class="h1-wrap" >
-                             
-                                    <div class="fileinput fileinput-new" data-provides="fileinput" style="width:100%;">
-                                        <div class="fileinput-new thumbnail" style="width:120px;height:160px;">
-                                            <br>
-                                            <br>
-                                            <img data-src="holder.js/100%x100%" alt="사진을 첨부하세요. &#13;(120 X 160)">
-                                        </div>
-                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-                                        <div style="width:15%;">
-                                            <span class="btn btn-default btn-file" style="width:100%;"><span class="fileinput-new" >Select image</span><span class="fileinput-exists" >Change</span>
-                                            <input type="file" name="...">
-                                            </span>
-                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                        </div>
-                                          <table class="table table-bordered table-striped nanum"style="width:83%;float:right;" >
-                                            <tbody>
-
-                                                <tr>
-                                                    <thead>
-                                                        <td class="success">이름</td>
-                                                        <td>임경민</td>
-                                                        <td class="success">영문</td>
-                                                        <td>Yim Kyeongmin</td>
-                                                        <td class="success">한자</td>
-                                                        <td>任鏡旻</td>
-                                                    </thead>
-                                                </tr>
-                                                <tr>
-                                                    <thead>
-                                                        <td class="success">생년월일</td>
-                                                        <td>
-                                                            <input class="form-control" type="date">
-                                                        </td>
-                                                        <td class="success">성별</td>
-                                                        <td>
-                                                            <select class="form-control">
-                                                                <option>남성</option>
-                                                                <option>여성</option>
-                                                            </select>
-                                                        </td>
-
-                                                        <div class="form-group form-group-md">
-
-                                                            <td class="success">나이</td>
-                                                            <td>27세</td>
-                                                        </div>
-                                                    </thead>
-                                                </tr>
-                                                <tr>
-                                                    <thead>
-                                                        <td class="success">핸드폰 번호</td>
-                                                        <td>010-9169-3846</td>
-                                                        <td class="success">비상 연락처</td>
-                                                        <td colspan="3">031-503-8225</td>
-
-                                                    </thead>
-                                                </tr>
-                                                <tr>
-                                                    <thead>
-                                                        <td class="success">E-mail Address</td>
-                                                        <td>ygm8225@gmail.com</td>
-                                                        <td class="success">주요 URL (ex. git,...)</td>
-                                                        <td colspan="3">www.naver.com</td>
-                                                    </thead>
-                                                </tr>
-                                                <tr>
-                                                    <thead>
-                                                        <td class="success">거주지 주소</td>
-                                                        <td colspan="5">429-450 뉴욕주 멘하탄 엠파이어스테이트빌딩 38층 </td>
-                                                    </thead>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+    <!--프로필 등록 화면의 위치 조정을 위하여 class="h1-wrap"을 주석처리하고 row로 대체함 - 오병소 (160405 - UI작업)-->
+    <!--<div class="h1-wrap">--> 
+      <div class="row">
+          <div class="col-xs-2">
+                                <div class="fileinput fileinput-new" data-provides="fileinput" style="width:100%;">
+                                    
+                                    <!--오른쪽 테이블과의 수평 맞춤을 위한 태그로 사용되었으나 필요 없어서 주석 처리함 - 오병소(160405- UI작업)-->
+                                   <!-- <div style="height:15px"></div>-->
+                                    
+                                    <div class="fileinput-new thumbnail" style="width:120px;height:160px;">
+                                        <br>
+                                        <br>
+                                        <img data-src="holder.js/100%x100%" alt="파일 용량 1MB 이하 3.5cm X 4.5cm
+                                                                            jpg, gif 파일만 가능 (6개월 내 찍은 사진)">
                                     </div>
-                                       
-                                      
+                                    <div class="fileinput-preview fileinput-exists thumbnail" style="width: 120px; height: 160px;"></div>
+                                    <div style="width:120px;">
+                                        <span class="btn btn-default btn-file" style="width:100%;"><span class="fileinput-new" >Select image</span><span class="fileinput-exists">Change</span>
+                                        <input type="file" name="...">
+                                        </span>
+                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
                                     </div>
-                              
-                    
-                            <section id="one">
+    </div>
+          </div>
+                                    
+                                    
+                                    <div class="col-md-10">
+                                    <table class="table table-bordered table-striped nanum" style="width:100%;float:right;">
+                                        <tbody>
 
-                            </section>
+                                            <tr>
+                                                <thead>
+                                                    <td class="success"><strong>이름</strong></td>
+                                                    <td>
+
+                                                        <input class="form-control" type="text" id="formGroupInputLarge" placeholder="이름을 입력하세요.">
+                                                    </td>
+                                                    <td class="success"><strong>영문</strong></td>
+                                                    <td>
+                                                        <input class="form-control" type="text" id="formGroupInputLarge" placeholder="ex) Hong GilDong">
+                                                    </td>
+                                                </thead>
+                                            </tr>
+                                            <tr>
+                                                <thead>
+                                                    <td class="success"><strong>생년월일</strong></td>
+                                                    <td>
+                                                        <input class="form-control" type="date">
+                                                    </td>
+                                                    <td class="success"><strong>성별</strong></td>
+                                                    <td>
+                                                        <select class="form-control">
+                                                            <option>남성</option>
+                                                            <option>여성</option>
+                                                        </select>
+                                                    </td>
+
+
+                                                </thead>
+                                            </tr>
+                                            <tr>
+                                                <thead>
+                                                    <td class="success"><strong>핸드폰 번호</strong></td>
+                                                    <td>
+                                                        <input class="form-control" type="text" id="formGroupInputLarge" placeholder="ex) 82-10-9169-3846">
+                                                    </td>
+                                                    <td class="success"><strong>비상 연락처</strong></td>
+                                                    <td>
+                                                        <input class="form-control" type="text" id="formGroupInputLarge" placeholder="ex) 031-123-4567">
+                                                    </td>
+
+                                                </thead>
+                                            </tr>
+                                            <tr>
+                                                <thead>
+                                                    <td class="success"><strong>E-mail Addres</strong>s</td>
+                                                    <td>
+                                                        <input class="form-control" type="email" id="formGroupInputLarge" placeholder="ex) ygm8225@gmail.com">
+                                                    </td>
+                                                    <td class="success"><strong>주요 URL</strong></td>
+                                                    <td colspan="3">
+                                                        <input class="form-control" type="text" id="formGroupInputLarge" placeholder="ex)www.github.com/Yimkm">
+                                                    </td>
+                                                </thead>
+                                            </tr>
+                                            <tr>
+                                                <thead>
+                                                    <td class="success"><strong>거주지 주소</strong></td>
+                                                    <td colspan="3">
+                                                        <input class="form-control" type="text" id="formGroupInputLarge" style="width:79%">
+                                                        <button type="submit" class="btn btn-default" style="width:20%"><strong>주소 검색</strong></button>
+                                                    </td>
+                                                </thead>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                </div>
+                     
+
+                            </section> <!--섹션 1 끝-->
+                            
+                            
+                            
                             <section id="two">
                                 <h2 class="shareTech">Section 2</h2>
                                 <p>
