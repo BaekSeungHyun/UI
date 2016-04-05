@@ -32,6 +32,51 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
     <style>
+        /* Style the buttons that are used to open and close the accordion panel */
+        
+        button.accordion:after {
+            content: '\02795';
+            /* Unicode character for "plus" sign (+) */
+            font-size: 13px;
+            color: #777;
+            float: right;
+            margin-left: 5px;
+        }
+        
+        button.accordion.active:after {
+            content: "\2796";
+            /* Unicode character for "minus" sign (-) */
+        }
+        
+        button.accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.4s;
+        }
+        /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+        
+        button.accordion.active,
+        button.accordion:hover {
+            background-color: #ddd;
+        }
+        /* Style the accordion panel. Note: hidden by default */
+        
+        div.panel {
+            padding: 0 18px;
+            background-color: white;
+            display: none;
+        }
+        /* The "show" class is added to the accordion panel when the user clicks on one of the buttons. This will show the panel content */
+        
+        div.panel.show {
+            display: block !important;
+        }
         /* Remove the navbar's default margin-bottom and rounded borders */
         
         .navbar {
@@ -94,11 +139,6 @@
         /* -------------------------------- style add --------------------------------*/
         /* 여기는 본문의 텍스트 */
         
-        body,
-        body a {
-            background: #FAF7FA;
-            color: #52aae2;
-        }
         /* 여기는 해당 페이지 좌측 메뉴 하이라이트 색깔*/
         
         body .nav-list>.active>a {
@@ -111,7 +151,6 @@
         }
         
         body .nav a:hover {
-            color: #477aed;
             background-color: #F7EDFA;
         }
         
@@ -169,13 +208,14 @@
         
         section {
             background-color: #F2EBF7;
-            height: 400px; /*프로필 등록을 위해서 section의 세로 사이즈 조정함 - 오병소 (160405 - UI 작업)*/
+            height: auto;
+            /*프로필 등록을 위해서 section의 세로 사이즈 조정함 - 오병소 (160405 - UI 작업)*/
             margin-bottom: 1em;
             padding: 1em 1em .5em 1em;
         }
         
         section + section {
-            height: 400px/* note the section height here! */
+            height: auto/* note the section height here! */
         }
         
         section + section + section {
@@ -362,128 +402,219 @@
                     <div class="row">
                         <div id="side-nav">
                             <ul class="nav nav-list affix">
-                                <li><a href="#start">*Scroll Spy<br><sub>vertical height</sub></a></li>
-                                <li><a href="#one">N&deg;1</a></li>
-                                <li><a href="#two">N&deg;2</a></li>
-                                <li><a href="#three">N&deg;3</a></li>
-                                <li><a href="#four">N&deg;4</a></li>
+                              <!--  <li><a href="#start">*Scroll Spy<br><sub>vertical height</sub></a></li>-->
+                                <li><a href="#one">개인신상</a></li>
+                                <li><a href="#two">포트폴리오</a></li>
+                                <!--<li><a href="#three">N&deg;3</a></li>
+                                <li><a href="#four">N&deg;4</a></li>-->
                             </ul>
                         </div>
                         <div class="col-md-offset-2 col-md-9 content">
-                            
+
                             <section id="one">
-                      
+                                <h2 class="shareTech">개인신상</h2>
                                 <br>
-    <!--프로필 등록 화면의 위치 조정을 위하여 class="h1-wrap"을 주석처리하고 row로 대체함 - 오병소 (160405 - UI작업)-->
-    <!--<div class="h1-wrap">--> 
-      <div class="row">
-          <div class="col-xs-2">
-                                <div class="fileinput fileinput-new" data-provides="fileinput" style="width:100%;">
-                                    
-                                    <!--오른쪽 테이블과의 수평 맞춤을 위한 태그로 사용되었으나 필요 없어서 주석 처리함 - 오병소(160405- UI작업)-->
-                                   <!-- <div style="height:15px"></div>-->
-                                    
-                                    <div class="fileinput-new thumbnail" style="width:120px;height:160px;">
-                                        <br>
-                                        <br>
-                                        <img data-src="holder.js/100%x100%" alt="파일 용량 1MB 이하 3.5cm X 4.5cm
+                                <!--프로필 등록 화면의 위치 조정을 위하여 class="h1-wrap"을 주석처리하고 row로 대체함 - 오병소 (160405 - UI작업)-->
+                                <!--<div class="h1-wrap">-->
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput" style="width:100%;">
+
+                                            <!--오른쪽 테이블과의 수평 맞춤을 위한 태그로 사용되었으나 필요 없어서 주석 처리함 - 오병소(160405- UI작업)-->
+                                            <!-- <div style="height:15px"></div>-->
+
+                                            <div class="fileinput-new thumbnail" style="width:120px;height:160px;">
+                                                <br>
+                                                <br>
+                                                <img data-src="holder.js/100%x100%" alt="파일 용량 1MB 이하 3.5cm X 4.5cm
                                                                             jpg, gif 파일만 가능 (6개월 내 찍은 사진)">
+                                            </div>
+                                            <div class="fileinput-preview fileinput-exists thumbnail" style="width: 120px; height: 160px;"></div>
+                                            <div style="width:120px;">
+                                                <span class="btn btn-default btn-file" style="width:100%;"><span class="fileinput-new" >Select image</span><span class="fileinput-exists">Change</span>
+                                                <input type="file" name="...">
+                                                </span>
+                                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="fileinput-preview fileinput-exists thumbnail" style="width: 120px; height: 160px;"></div>
-                                    <div style="width:120px;">
-                                        <span class="btn btn-default btn-file" style="width:100%;"><span class="fileinput-new" >Select image</span><span class="fileinput-exists">Change</span>
-                                        <input type="file" name="...">
-                                        </span>
-                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                    </div>
-    </div>
-          </div>
-                                    
-                                    
+
+
                                     <div class="col-md-10">
-                                    <table class="table table-bordered table-striped nanum" style="width:100%;float:right;">
-                                        <tbody>
+                                        <table class="table table-bordered table-striped nanum" style="width:100%;float:right;">
+                                            <tbody>
 
-                                            <tr>
-                                                <thead>
-                                                    <td class="success"><strong>이름</strong></td>
-                                                    <td>
+                                                <tr>
+                                                    <thead>
+                                                        <td class="success"><strong>이름</strong></td>
+                                                        <td>
 
-                                                        <input class="form-control" type="text" id="formGroupInputLarge" placeholder="이름을 입력하세요.">
-                                                    </td>
-                                                    <td class="success"><strong>영문</strong></td>
-                                                    <td>
-                                                        <input class="form-control" type="text" id="formGroupInputLarge" placeholder="ex) Hong GilDong">
-                                                    </td>
-                                                </thead>
-                                            </tr>
-                                            <tr>
-                                                <thead>
-                                                    <td class="success"><strong>생년월일</strong></td>
-                                                    <td>
-                                                        <input class="form-control" type="date">
-                                                    </td>
-                                                    <td class="success"><strong>성별</strong></td>
-                                                    <td>
-                                                        <select class="form-control">
-                                                            <option>남성</option>
-                                                            <option>여성</option>
-                                                        </select>
-                                                    </td>
+                                                            <input class="form-control" type="text" id="formGroupInputLarge" placeholder="이름을 입력하세요.">
+                                                        </td>
+                                                        <td class="success"><strong>영문</strong></td>
+                                                        <td>
+                                                            <input class="form-control" type="text" id="formGroupInputLarge" placeholder="ex) Hong GilDong">
+                                                        </td>
+                                                    </thead>
+                                                </tr>
+                                                <tr>
+                                                    <thead>
+                                                        <td class="success"><strong>생년월일</strong></td>
+                                                        <td>
+                                                            <input class="form-control" type="date">
+                                                        </td>
+                                                        <td class="success"><strong>성별</strong></td>
+                                                        <td>
+                                                            <select class="form-control">
+                                                                <option>남성</option>
+                                                                <option>여성</option>
+                                                            </select>
+                                                        </td>
 
 
-                                                </thead>
-                                            </tr>
-                                            <tr>
-                                                <thead>
-                                                    <td class="success"><strong>핸드폰 번호</strong></td>
-                                                    <td>
-                                                        <input class="form-control" type="text" id="formGroupInputLarge" placeholder="ex) 82-10-9169-3846">
-                                                    </td>
-                                                    <td class="success"><strong>비상 연락처</strong></td>
-                                                    <td>
-                                                        <input class="form-control" type="text" id="formGroupInputLarge" placeholder="ex) 031-123-4567">
-                                                    </td>
+                                                    </thead>
+                                                </tr>
+                                                <tr>
+                                                    <thead>
+                                                        <td class="success"><strong>핸드폰 번호</strong></td>
+                                                        <td>
+                                                            <input class="form-control" type="text" id="formGroupInputLarge" placeholder="ex) 82-10-9169-3846">
+                                                        </td>
+                                                        <td class="success"><strong>비상 연락처</strong></td>
+                                                        <td>
+                                                            <input class="form-control" type="text" id="formGroupInputLarge" placeholder="ex) 031-123-4567">
+                                                        </td>
 
-                                                </thead>
-                                            </tr>
-                                            <tr>
-                                                <thead>
-                                                    <td class="success"><strong>E-mail Addres</strong>s</td>
-                                                    <td>
-                                                        <input class="form-control" type="email" id="formGroupInputLarge" placeholder="ex) ygm8225@gmail.com">
-                                                    </td>
-                                                    <td class="success"><strong>주요 URL</strong></td>
-                                                    <td colspan="3">
-                                                        <input class="form-control" type="text" id="formGroupInputLarge" placeholder="ex)www.github.com/Yimkm">
-                                                    </td>
-                                                </thead>
-                                            </tr>
-                                            <tr>
-                                                <thead>
-                                                    <td class="success"><strong>거주지 주소</strong></td>
-                                                    <td colspan="3">
-                                                        <input class="form-control" type="text" id="formGroupInputLarge" style="width:79%">
-                                                        <button type="submit" class="btn btn-default" style="width:20%"><strong>주소 검색</strong></button>
-                                                    </td>
-                                                </thead>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                                    </thead>
+                                                </tr>
+                                                <tr>
+                                                    <thead>
+                                                        <td class="success"><strong>E-mail Addres</strong>s</td>
+                                                        <td>
+                                                            <input class="form-control" type="email" id="formGroupInputLarge" placeholder="ex) ygm8225@gmail.com">
+                                                        </td>
+                                                        <td class="success"><strong>주요 URL</strong></td>
+                                                        <td colspan="3">
+                                                            <input class="form-control" type="text" id="formGroupInputLarge" placeholder="ex)www.github.com/Yimkm">
+                                                        </td>
+                                                    </thead>
+                                                </tr>
+                                                <tr>
+                                                    <thead>
+                                                        <td class="success"><strong>거주지 주소</strong></td>
+                                                        <td colspan="3">
+                                                            <input class="form-control" type="text" id="formGroupInputLarge" style="width:79%;">
+                                                            <button type="submit" class="btn btn-default" style="width:20%"><strong>주소 검색</strong></button>
+                                                        </td>
+                                                    </thead>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <button type="submit" class="btn btn-default" style="width:20%"><strong>저장</strong></button>
+                                    </div>
                                 </div>
-                                </div>
-                     
 
-                            </section> <!--섹션 1 끝-->
-                            
-                            
-                            
-                            <section id="two">
-                                <h2 class="shareTech">Section 2</h2>
-                                <p>
-                                    Scroll spy is very fun but pretty tricky when it's activated by id's with elements of varying heights.
-                                </p>
                             </section>
+                            <!--섹션 1 끝-->
+
+
+
+                            <section id="two">
+                                <h2 class="shareTech">포트폴리오</h2>
+                                <button class="accordion">노출태그</button>
+                                <div class="panel">
+                                    <label> 태그입력</label>
+                                    <input type="text" size="70">
+                                    <button type="submit" class="btn btn-default" style="width:20%"><strong>저장</strong></button>
+                                </div>
+
+
+                                <button class="accordion">학력</button>
+                                <div class="panel">
+                                    <label> 학교*</label>
+                                    <input type="text" size="70"><br/>
+                                    
+                                    <label> 재학기간</label>
+                                    <input type="text" size="10"> - <input type="text" size="10"><br/>
+                                    
+                                    <label> 학위</label>
+                                    <input type="text" size="70"><br/>
+                                    
+                                    <label> 전공</label>
+                                    <input type="text" size="70"><br/>
+                                    
+                                    <label> 성적</label>
+                                    <input type="text" size="70"><br/>
+                                    
+                                    <label> 동아리 및 학회</label>
+                                    <input type="text" size="70"><br/>
+                                    
+                                    <label> 설명</label>
+                                    <input type="text" size="70"><br/>
+                                    
+                                    <button type="submit" class="btn btn-default" style="width:20%"><strong>저장</strong></button>
+                                    
+                                </div>
+
+                                <button class="accordion">경력</button>
+                                <div class="panel">
+                                    <p>Lorem ipsum...</p>
+                                </div>
+
+                                <button class="accordion">보유기술</button>
+                                <div class="panel">
+                                    <p>Lorem ipsum...</p>
+                                </div>
+                                
+                                                                <button class="accordion">외국어</button>
+                                <div class="panel">
+                                    <p>Lorem ipsum...</p>
+                                </div>
+                                
+                                                                <button class="accordion">봉사활동</button>
+                                <div class="panel">
+                                    <p>Lorem ipsum...</p>
+                                </div>
+                                
+                                                                <button class="accordion">시험성적</button>
+                                <div class="panel">
+                                    <p>Lorem ipsum...</p>
+                                </div>
+                                
+                                                                <button class="accordion">프로젝트</button>
+                                <div class="panel">
+                                    <p>Lorem ipsum...</p>
+                                </div>
+                                
+                                                                <button class="accordion">논문.저서</button>
+                                <div class="panel">
+                                    <p>Lorem ipsum...</p>
+                                </div>
+                                
+                                                                <button class="accordion">자격증</button>
+                                <div class="panel">
+                                    <p>Lorem ipsum...</p>
+                                </div>
+                                
+                                                                <button class="accordion">관심분야</button>
+                                <div class="panel">
+                                    <p>Lorem ipsum...</p>
+                                </div>
+                                                                <button class="accordion">연락하는방법</button>
+                                <div class="panel">
+                                    <p>Lorem ipsum...</p>
+                                </div>
+
+                                
+                                
+                                
+                                
+                                
+                                
+                            </section>
+                            
+                            
+                            <!--
                             <section id="three">
                                 <h2 class="shareTech">Section 3</h2>
                                 <p>
@@ -496,6 +627,7 @@
                                     If you're rendering trigger id elements dynamically it's best to make sure that you're setting the height of the element as well; particularly if the element height is small.
                                 </p>
                             </section>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -532,6 +664,18 @@
         $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut();
     });
     //sub 상단바 끝
+
+
+    /* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function () {
+            this.classList.toggle("active");
+            this.nextElementSibling.classList.toggle("show");
+        }
+    }
 </script>
 
 <!-- -->
