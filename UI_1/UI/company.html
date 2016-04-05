@@ -76,7 +76,7 @@
 </head>
 <body>
 <!--상단바 시작-->
-<div class="navbar-fixed-top">
+<div class="navbar-fixed-top col-md-12">
   <!--첫번 상단바 시작-->
   <nav class="navbar navbar-inverse" >
     <div class="container-fluid">
@@ -145,35 +145,21 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
       <ul class="nav nav-pills">
-
-        <li role="presentation" id = "dropdown" class="dropdown" >
-          <a href="#" class="navbar-item">홈</a>
-        </li>
         
         <li role="presentation" class="dropdown">
-          <a href="#" class="navbar-item">이력서등록</a>
+          <a href="#" class="navbar-item">채용공고</a>
           <ul id = "dropdown-menu" class="dropdown-menu" role="menu">
-            <li><a href='#'>item1</a></li>
-            <li><a href='#'>item2</a></li>
-            <li><a href='#'>item3</a></li>
-          </ul>
-        </li>
-        
-        <li role="presentation" class="dropdown">
-          <a href="#" class="navbar-item">채용정보</a>
-          <ul id = "dropdown-menu" class="dropdown-menu" role="menu">
-            <li><a href='#'>item1</a></li>
-            <li><a href='#'>item2</a></li>
-            <li><a href='#'>item3</a></li>
+            <li><a href='#'>공고등록</a></li>
+            <li><a href='#'>채용중인 기업</a></li>
           </ul>
         </li>
 
         <li role="presentation" class="dropdown">
           <a href="#" class="navbar-item">프로젝트</a>
           <ul id = "dropdown-menu" class="dropdown-menu" role="menu">
-            <li><a href='#'>item1</a></li>
-            <li><a href='#'>item2</a></li>
-            <li><a href='#'>item3</a></li>
+            <li><a href='add_project.html'>프로젝트 등록</a></li>
+            <li><a href='#'>프로젝트 조회</a></li>
+            <li><a href='#'>프로젝트 관리</a></li>
           </ul>
         </li>
 
@@ -182,14 +168,13 @@
         </li>
       </ul>
     </div>
-
   </div>
   <!-- sub상단바 끝-->
 </div>
 <!-- 상단바 완전 끝-->
 
   <!--본문 시작-->
-  <div class="container-fluid text-center">    
+  <div class="container-fluid col-md-12 text-center">    
     <div class="row content">
       <div class="col-sm-1 sidenav">
       </div>
@@ -588,19 +573,6 @@
   });
   //그래프 끝
 
-  //그래프 시작
-    var data = {
-      series: [2, 3, 4]
-    };
-
-    var sum = function(a, b) { return a + b };
-
-    new Chartist.Pie('#chart', data, {
-      labelInterpolationFnc: function(value) {
-        return Math.round(value / data.series.reduce(sum) * 100) + '%';
-      }
-    });
-  //그래프 끝
 
   //sub 상단바 시작
   $('.dropdown').hover(function(){
