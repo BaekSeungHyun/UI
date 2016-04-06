@@ -16,92 +16,55 @@
 	<link rel="stylesheet" type="text/css" href="examples.css" />
 	<style>
 
-	/* Style for our header texts
-	* --------------------------------------- */
-	h1{
-		font-size: 5em;
-		font-family: arial,helvetica;
-		color: #fff;
-		margin:0;
-		padding:0;
-	}
+        /* Style for our header texts
+        * --------------------------------------- */
+        h1{
+            font-size: 5em;
+            font-family: arial,helvetica;
+            color: #fff;
+            margin:0;
+            padding:0;
+        }
 
-	/* Centered texts in each section
-	* --------------------------------------- */
-	.section{
-		text-align:center;
-        font-size: 6em;
-	}
+        /* Centered texts in each section
+        * --------------------------------------- */
+        .section{
+            text-align:center;
+            font-size: 6em;
+        }
 
+        /* Backgrounds will cover all the section
+        * --------------------------------------- */
+        .section{
+            background-size: cover;
+        }
 
-	/* Backgrounds will cover all the section
-	* --------------------------------------- */
-	.section{
-		background-size: cover;
-	}
-	.slide{
-		background-size: cover;
-	}
-    .circle{
-        padding: 5%
-    }
+        /* Defining each section background and styles
+        * --------------------------------------- */
+        #section0{
+            background-image: url(img/buildings.jpg);
+            /*opacity: .50; 배경의 투명도*/
+            padding: 10% 0 0 0;
+        }
+        #section1{
+            background-color: #60c7e6;
+            /*background-image: url(img/main2.jpg);*/
+            padding: 6% 0 0 0;
+        }
 
-	/* Defining each section background and styles
-	* --------------------------------------- */
-	#section0{
-		background-image: url(resources/img/buildings.jpg);
-        /*opacity: .50; 배경의 투명도*/
-		padding: 10% 0 0 0;
-	}
-	#section2{
-        background-color: #60c7e6;
-		/*background-image: url(resources/img/main2.jpg);*/
-		padding: 6% 0 0 0;
-    }
-/*        
-	}
-	#section3{
-		background-image: url(imgs/bg4.jpg);
-		padding: 6% 0 0 0;
-	}
-   */     
-	#section3 h1{
-		color: #000;
-	}
-        
-    #section4{
-         text-shadow: -2px -2px 4px #888;   
-         color: #fff;
-         font-family:  Helvetica, Arial, sans-serif;
-         font-size: 1em;
-         font-weight: bold;
-    }
-    #second{
-        text-shadow: -2px -2px 4px #ffffff;  
-        font-size: 0.5em;    
-        font-family:  Helvetica, Arial, sans-serif;
-    }
+        #first{
+             text-shadow: -2px -2px 4px #888;   
+             color: #fff;
+             font-family:  Helvetica, Arial, sans-serif;
+             font-size: 1em;
+             font-weight: bold;
+        }
+        #second{
+            text-shadow: -2px -2px 4px #ffffff;  
+            font-size: 0.5em;    
+            font-family:  Helvetica, Arial, sans-serif;
+        }
 
-/*
-
- 	Adding background for the slides
-	* --------------------------------------- 
-	#slide1{
-		background-image: url(imgs/main2.jpg);
-		padding: 6% 0 0 0;
-	}
-	#slide2{
-		background-image: url(imgs/bg5.jpg);
-		padding: 6% 0 0 0;
-	}
-*/
-
-
-	/* Bottom menu
-	* --------------------------------------- */
-	#infoMenu li a {
-		color: #fff;
-	}
 	</style>
 
 	<!--[if IE]>
@@ -118,7 +81,13 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
-				verticalCentered: false
+				verticalCentered: false,
+                anchors: ['firstPage', 'secondPage'],
+				navigation: true,
+				navigationPosition: 'left',
+				navigationTooltips: ['Welcome!','SpringJobs?'],
+                responsiveWidth: 900,
+                fontSize:20
 
 			});
 		});   
@@ -129,25 +98,29 @@
 
 <div id="fullpage">
 	<div class="section" id="section0">
-        <img src="resources/img/SJ-logo.jpg" width="120" height="120" alt="SJ" />
-        <div class="section" id="section4">SpringJobs<br><h2>프리랜서 여러분을 환영합니다.</h2><br/>
-            <button type="button" id="myButton" class="btn btn-info btn-lg"  onclick="location.href='developer.html';">
-              Developer
-            </button>
-            <button type="button" id="myButton" class="btn btn-warning btn-lg" onclick="location.href='company.html';">
-              company
-            </button>            
+        <img src="img/SJ-logo.jpg" width="8%" height=auto alt="SJ" />
+        <div class="intro" id="first">
+            SpringJobs
+            <br>
+            <h2>프리랜서 여러분을 환영합니다.</h2>
+                <button type="button" id="myButton" class="btn btn-info btn-lg"  onclick="location.href='developer.html';">
+                  Developer
+                </button>
+                <button type="button" id="myButton" class="btn btn-warning btn-lg" onclick="location.href='developer.html';">
+                  Company
+                </button>            
         </div>
-
     </div>
-	    <div class="section" id="section2" >
-            <p><img src="resources/img/join2.jpg"></p>
+	    
+    <div class="section" id="section1" >
+            <img src="img/join2.jpg" width="50%" height=auto alt="work">
             <div class="intro" id="second">
-                    <strong>SpringJobs는</strong> 프리랜서 개발자와
-                <br>기업간의 협력을 위해 존재합니다.<br/>
-                <!--  기업간의 협력-->
+                <strong>SpringJobs</strong>는 기업과 프리랜서 개발자의 
+                <br>매칭 사이트입니다.
+                <!--<br><strong>spring-cleaning your career!</strong>
+                <br>새로운 일을 원한다면 도전해보세요!-->
             </div>
-        </div>
+    </div>
 </div>
 
 </body>
