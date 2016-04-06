@@ -543,9 +543,11 @@
         //검색 태그 삭제
         ////////////////추후 ready에도 넣어줘야됨
         $('.tag-delete').click(function(){
+            $(this).parent().remove();
             var deleteTag = $(this).parent('span').text().split('X')[0];
             console.log(deleteTag);
-            $('.search-check:contains('+deleteTag+')').attr('checked',false);
+            alert(('input:checked:contains('+deleteTag+')').text());
+//            $('input:checked:contains('+deleteTag+')').attr('checked',false);
         });
         //검색 태그 삭제 끝
         
