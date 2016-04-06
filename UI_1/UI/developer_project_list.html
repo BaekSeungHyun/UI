@@ -76,6 +76,15 @@
     .sidejob{
       padding-bottom: 10px;
     }
+      
+    .search-option{
+        margin: 0px;
+    }
+      
+    .tag-delete{
+        color: white;
+        font-size: 1em;
+    }
   </style>
 </head>
 <body>
@@ -192,36 +201,36 @@
                     <td>
                         <strong>지역</strong>
                         <button class="fold">>></button>
-                        <ul class="hide location">
+                        <ul class="location">
                             <li>
                                 <div class="checkbox">
                                   <label>
-                                    <input type="checkbox" value="">
-                                    대한민국 서울 중구
+                                    <input type="checkbox" class="search-check">
+                                        <p class="search-option">대한민국 서울 중구</p>
                                   </label>
                                 </div>
                             </li>
                             <li>
                                 <div class="checkbox">
                                   <label>
-                                    <input type="checkbox" value="">
-                                    대한민국 서울 중구
+                                    <input type="checkbox" class="search-check">
+                                        <p class="search-option">대한민국 경기 성남</p>
                                   </label>
                                 </div>
                             </li>
                             <li>
                                 <div class="checkbox">
                                   <label>
-                                    <input type="checkbox" value="">
-                                    대한민국 서울 중구
+                                    <input type="checkbox" class="search-check">
+                                        <p class="search-option">대한민국 서울 강남</p>
                                   </label>
                                 </div>
                             </li>
                             <li>
                                 <div class="checkbox">
                                   <label>
-                                    <input type="checkbox" value="">
-                                    대한민국 서울 중구
+                                    <input type="checkbox" class="search-check">
+                                        <p class="search-option">대한민국 서울 서초</p>
                                   </label>
                                 </div>
                             </li>
@@ -238,6 +247,14 @@
         <div class="col-md-10">
           <!--페이지 중앙 본문 중 우측 본문 판낼-->
           <div class="col-md-12">
+            <!--검색 태그-->
+                <table class="table">
+                    <tr>
+                        <td id="input-tag"> </td>
+                    </tr>
+                    <tr>
+                        <td>
+            <!-- 검색태그 끝-->
             <div class="panel panel-default">
               <div class="panel-heading"><h4><strong>프로젝트 리스트</strong></h4></div>
               <div class="panel-body">
@@ -479,6 +496,9 @@
                 </div>
               </div>
             </div>
+                            </td>
+                    </tr>
+          </table>
           </div>
           <!--페이지 중앙 본문 중 우측 본문 판넬 끝-->
         </div>
@@ -504,12 +524,37 @@
     //location 숨기기
     $('.fold').click(function(){
         var submenu = $(this).next(".location");
-//        if(submenu.is(":visible")){
-//            submenu.slideUp();
-//        }else{
-//            submenu.slideDown();
-//        }
+        if(submenu.is(":visible")){
+            submenu.slideUp();
+        }else{
+            submenu.slideDown();
+        }
     });
+    //location 숨기기 끝
+      
+    //검색 태그 추가
+    $('.search-check').click(function(){
+        var searchOption = $(this).next('.search-option').text();
+        var inputTag = $('#input-tag');
+        var tagDelete = $("<a></a>").addClass('tag-delete').text(' X');
+        inputTag.append($("<span></span>").addClass('label label-primary').text(searchOption).append(tagDelete));
+        
+        
+        //검색 태그 삭제
+        ////////////////추후 ready에도 넣어줘야됨
+        $('.tag-delete').click(function(){
+            var deleteTag = $(this).parent('span').text().split('X')[0];
+            console.log(deleteTag);
+            $('.search-check:contains('+deleteTag+')').attr('checked',false);
+        });
+        //검색 태그 삭제 끝
+        
+        
+    });
+    //검색 태그 추가 끝
+    
+    
+    
       
     //아래 한줄은 옆에 비어있는 공간 높이 채우기
     $('.row.content').css('height',$('.main').height());
